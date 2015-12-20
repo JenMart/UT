@@ -10,16 +10,16 @@ class TestPullData(unittest.TestCase):
         pd = pullData()
         # randomWords = "blueberry homewards zero banana gravel hairless avenging highway circuitry agency".split()
         # word = randomWords[random.randint(0,9)]
-        fileOpen = open("tryFile.txt", "r")
+        fileOpen = open("tryFile.txt", "r") #same principle as original
         foString = fileOpen.read().split()
         word = foString[random.randint(0,9)]
         wordCount = len(word)
         starCounter = 0
         starWord = ""
-        while wordCount > starCounter: ##Determines the number of letters in the word and makes an * version
+        while wordCount > starCounter:
             starWord += "*"
             starCounter += 1
-        self.assertEqual(pd.makeStars(word), starWord)
+        self.assertEqual(pd.makeStars(word), starWord) #confirms word has correct # of stars
 
 
     def test_readFile(self):
@@ -30,7 +30,7 @@ class TestPullData(unittest.TestCase):
                 array.append(line.strip())
         self.assertEqual(len(array), len(pd.readFile()))
         for fl in pd.readFile():
-            self.assertNotIn('',fl)
+            self.assertNotIn('',fl) #confirms correct word was pulled
 
 
 class TestGame(unittest.TestCase):
@@ -38,7 +38,7 @@ class TestGame(unittest.TestCase):
         gm = Game_Manager()
         self.assertIsNotNone(gm)
 
-    def testCheck(self):
+    def testCheck(self): #checks to see if bool function is correct
          gmtrue = Game_Manager().checkWord("testword","testword")
          gmfalse = Game_Manager().checkWord("testword", "wrongword")
          self.assertTrue(gmtrue)
